@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'Project Sail',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
