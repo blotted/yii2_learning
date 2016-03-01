@@ -11,6 +11,12 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute' => 'main',
+    'modules' => [
+        'main' => [
+            'class' => 'app\modules\main\Module',
+        ],
+    ],
     'components' => [
         'mail' => [
             'class'            => 'zyx\phpmailer\Mailer',
@@ -23,8 +29,13 @@ return [
                 'smtpsecure' => 'ssl',
                 'smtpauth'   => true,
                 'username'   => 'igorivchenko@inbox.ru',
-                'password'   => '',
+                'password'   => '89penetration',
+                'ishtml'     => true,
+                'charset'    => 'UTF-8',
             ],
+        ],
+        'common' => [
+            'class' => 'frontend\components\Common',
         ],
         'user' => [
             'identityClass' => 'common\models\User',

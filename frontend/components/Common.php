@@ -5,12 +5,22 @@ use yii\base\Component;
 use Yii;
 
 class Common extends Component{
-    public static function sendMail($email, $subject, $body, $name=''){
-        Yii::$app->mail->compose()
-            ->setFrom([ Yii::$app->params['supportEmail'] => Yii::$app->name])
-            ->setTo([$email => $name])
+
+    const EVENT_NOTIFY = 'notify_admin';
+
+    public function sendMail($subject, $text, $emailFrom='slayer_dead@rambler.ru',$nameFrom=''){
+        if(Yii::$app->mail->compose()
+            ->setFrom(['igorivchenko@inbox.ru' => 'Advert'])
+            ->setTo([$emailFrom => $nameFrom])
             ->setSubject($subject)
-            ->setTextBody($body)
-            ->send();
+            ->setHtmlBody($text)
+            ->send()){
+            $this->trigger(self::EVENT_NOTIFY);
+            return true;
+        }
+    }
+
+    public function notifyAdmin($event){
+
     }
 }
