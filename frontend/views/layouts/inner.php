@@ -17,6 +17,20 @@ use yii\helpers\Html;
 <body>
 <?php $this->beginBody() ?>
 
+<?php if(Yii::$app->session->hasFlash('success')): ?>
+
+    <?php
+     $success = Yii::$app->session->getFlash('success');
+    echo \yii\bootstrap\Alert::widget([
+        'options' => [
+            'class' => 'alert-info'
+        ],
+        'body' => $success
+    ])
+    ?>
+
+<?php endif; ?>
+
 <?=$this->render("//common/head") ?>
 
 <div class="inside-banner">
